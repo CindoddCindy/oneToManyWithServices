@@ -2,7 +2,7 @@ package com.onetomanywithservices.otms.entity;
 
 import javax.persistence.*;
 @Entity
-@Table(name = "t_user")
+@Table(name = "user")
 public class User {
 
     @Id
