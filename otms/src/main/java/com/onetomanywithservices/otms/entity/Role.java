@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "role")
+@Table(name = "t_role")
 public class Role {
 
     @Id
@@ -15,6 +15,7 @@ public class Role {
 
     @OneToMany(targetEntity = User.class, cascade = CascadeType.PERSIST, orphanRemoval = true)
     private List<User> users;
+
     public Long getId() {
         return this.id;
     }

@@ -1,8 +1,8 @@
 package com.onetomanywithservices.otms.service;
 
-
-import com.onetomanywithservices.otms.entity.MyUser;
 import com.onetomanywithservices.otms.entity.Role;
+import com.onetomanywithservices.otms.entity.User;
+import com.onetomanywithservices.otms.repository.MyUserRepository;
 import com.onetomanywithservices.otms.repository.RoleRepository;
 import com.onetomanywithservices.otms.repository.UserRepository;
 import org.springframework.http.ResponseEntity;
@@ -10,15 +10,15 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-public class RoleService {
-
-    private RoleRepository roleRepository;
+public class UserService {
 
     private UserRepository userRepository;
 
-    public RoleService(RoleRepository roleRepository, UserRepository userRepository) {
-        this.roleRepository = roleRepository;
+    private MyUserRepository myUserRepository;
+
+    public UserService(UserRepository userRepository, MyUserRepository myUserRepository) {
         this.userRepository = userRepository;
+        this.myUserRepository = myUserRepository;
     }
 
     /**
@@ -26,30 +26,17 @@ public class RoleService {
      */
 
     @Transactional
-    public ResponseEntity<Object> addRole(Role role) {
+    public ResponseEntity<Object> addUser(User user) {
 
-        Role newRole = new Role();
-        newRole.setName(role.getName());
-        newRole.setDescription(role.getDescription());
+        User newUser = new User();
+        newUser.setFirstName(user.getFirstName());
+        newUser.setLastName(user.getLastName());
+        newUser.setMobile(user.getMobile());
+        newUser.setEmail(user.getEmail());
 
-        newRole.setUsers(role.getUsers());
-        Role savedRole = roleRepository.save(newRole);
-        if (roleRepository.findById(savedRole.getId()).isPresent()) {
-            return ResponseEntity.accepted().body("Successfully Created Role and Users");
-        } else
-            return ResponseEntity.unprocessableEntity().body("Failed to Create specified Role");
-    }
-
-    @Transactional
-    public ResponseEntity<Object> addRoles(Role role) {
-
-        Role newRole = new Role();
-        newRole.setName(role.getName());
-        newRole.setDescription(role.getDescription());
-
-        newRole.setUsers(role.getUsers());
-        Role savedRole = roleRepository.save(newRole);
-        if (roleRepository.findById(savedRole.getId()).isPresent()) {
+        newUser.setMyUsers(user.getMyUsers());
+        User savedUser = userRepository.save(newUser);
+        if (userRepository.findById(savedUser.getId()).isPresent()) {
             return ResponseEntity.accepted().body("Successfully Created Role and Users");
         } else
             return ResponseEntity.unprocessableEntity().body("Failed to Create specified Role");
@@ -58,6 +45,7 @@ public class RoleService {
     /**
      * Delete a specified role given the id
      */
+    /*
     public ResponseEntity<Object> deleteRole(Long id) {
         if (roleRepository.findById(id).isPresent()) {
             roleRepository.deleteById(id);
@@ -67,5 +55,7 @@ public class RoleService {
         } else
             return ResponseEntity.unprocessableEntity().body("No Records Found");
     }
+
+     */
 
 }

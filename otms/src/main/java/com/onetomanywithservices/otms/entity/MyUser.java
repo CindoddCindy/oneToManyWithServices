@@ -1,12 +1,9 @@
 package com.onetomanywithservices.otms.entity;
 
 import javax.persistence.*;
-import java.util.List;
-
 @Entity
-@Table(name = "t_user")
-public class User {
-
+@Table(name = "my_user")
+public class MyUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -15,17 +12,6 @@ public class User {
     private String mobile;
     @Column(unique = true)
     private String email;
-
-    @OneToMany(targetEntity = MyUser.class, cascade = CascadeType.PERSIST, orphanRemoval = true)
-    private List<MyUser> myUsers;
-
-    public List<MyUser> getMyUsers() {
-        return myUsers;
-    }
-
-    public void setMyUsers(List<MyUser> myUsers) {
-        this.myUsers = myUsers;
-    }
 
     public Long getId() {
         return id;
@@ -57,5 +43,4 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
-
 }
