@@ -10,7 +10,6 @@ public class MyUser {
     private String firstName;
     private String lastName;
     private String mobile;
-    @Column(unique = true)
     private String email;
 
     public Long getId() {

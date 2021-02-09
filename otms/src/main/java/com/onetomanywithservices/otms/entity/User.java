@@ -13,7 +13,6 @@ public class User {
     private String firstName;
     private String lastName;
     private String mobile;
-    @Column(unique = true)
     private String email;
 
     @OneToMany(targetEntity = MyUser.class, cascade = CascadeType.PERSIST, orphanRemoval = true)
