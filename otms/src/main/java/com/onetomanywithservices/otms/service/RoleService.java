@@ -33,12 +33,31 @@ public class RoleService {
         newRole.setDescription(role.getDescription());
 
         newRole.setUsers(role.getUsers());
+        newRole.setMyUsers(role.getMyUsers());
         Role savedRole = roleRepository.save(newRole);
         if (roleRepository.findById(savedRole.getId()).isPresent()) {
             return ResponseEntity.accepted().body("Successfully Created Role and Users");
         } else
             return ResponseEntity.unprocessableEntity().body("Failed to Create specified Role");
     }
+
+    /*
+
+    @Transactional
+    public ResponseEntity<Object> justRole(Role role) {
+
+        Role newRole = new Role();
+        newRole.setName(role.getName());
+        newRole.setDescription(role.getDescription());
+
+       // newRole.setUsers(role.getUsers());
+        Role savedRole = roleRepository.save(newRole);
+        if (roleRepository.findById(savedRole.getId()).isPresent()) {
+            return ResponseEntity.accepted().body("Successfully Created Role and Users");
+        } else
+            return ResponseEntity.unprocessableEntity().body("Failed to Create specified Role");
+    }
+
 
     @Transactional
     public ResponseEntity<Object> addRoles(Role role) {
@@ -47,13 +66,15 @@ public class RoleService {
         newRole.setName(role.getName());
         newRole.setDescription(role.getDescription());
 
-        newRole.setUsers(role.getUsers());
+        newRole.setMyUsers(role.getMyUsers());
         Role savedRole = roleRepository.save(newRole);
         if (roleRepository.findById(savedRole.getId()).isPresent()) {
             return ResponseEntity.accepted().body("Successfully Created Role and Users");
         } else
             return ResponseEntity.unprocessableEntity().body("Failed to Create specified Role");
     }
+
+     */
 
     /**
      * Delete a specified role given the id

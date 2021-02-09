@@ -16,6 +16,17 @@ public class Role {
     @OneToMany(targetEntity = User.class, cascade = CascadeType.PERSIST, orphanRemoval = true)
     private List<User> users;
 
+    @OneToMany(targetEntity = User.class, cascade = CascadeType.PERSIST, orphanRemoval = true)
+    private List<MyUser> myUsers;
+
+    public List<MyUser> getMyUsers() {
+        return myUsers;
+    }
+
+    public void setMyUsers(List<MyUser> myUsers) {
+        this.myUsers = myUsers;
+    }
+
     public Long getId() {
         return this.id;
     }
@@ -40,5 +51,7 @@ public class Role {
     public void setUsers(List<User> users) {
         this.users = users;
     }
+
+
 
 }

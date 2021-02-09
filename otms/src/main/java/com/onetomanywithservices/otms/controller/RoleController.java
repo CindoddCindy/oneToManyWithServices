@@ -19,6 +19,20 @@ public class RoleController {
     public ResponseEntity<Object> createRole(@RequestBody Role role) {
         return  roleService.addRole(role);
     }
+/*
+    @PostMapping("/role/creates")
+    public ResponseEntity<Object> createsRole(@RequestBody Role role) {
+        return  roleService.addRoles(role);
+    }
+
+    @PostMapping("/role/just")
+    public ResponseEntity<Object> justRole(@RequestBody Role role) {
+        return  roleService.justRole(role);
+    }
+
+
+ */
+
     @DeleteMapping("/role/delete/{id}")
     public ResponseEntity<Object> deleteRole(@PathVariable Long id) {
         return roleService.deleteRole(id);
