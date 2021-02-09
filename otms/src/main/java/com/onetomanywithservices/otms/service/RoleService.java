@@ -89,4 +89,16 @@ public class RoleService {
             return ResponseEntity.unprocessableEntity().body("No Records Found");
     }
 
+    public Role getRole(Long id) {
+        if(roleRepository.findById(id).isPresent()) {
+            Role role = roleRepository.findById(id).get();
+            Role roleModel = new Role();
+            roleModel.setName(role.getName());
+            roleModel.setDescription(role.getDescription());
+            roleModel.setUsers(role.getUsers());
+            roleModel.setMyUsers(role.getMyUsers());
+            return roleModel;
+        } else return null;
+    }
+
 }

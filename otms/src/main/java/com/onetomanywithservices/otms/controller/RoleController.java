@@ -37,4 +37,9 @@ public class RoleController {
     public ResponseEntity<Object> deleteRole(@PathVariable Long id) {
         return roleService.deleteRole(id);
     }
+
+    @GetMapping("/role/details/{id}")
+    public Role getRole(@PathVariable Long id) {
+        return roleService.getRole(id);
+    }
 }
